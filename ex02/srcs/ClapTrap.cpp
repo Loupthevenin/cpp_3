@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:22:27 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/16 11:43:53 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/16 11:43:38 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 ClapTrap::ClapTrap(std::string name)
     : name(name), hit(10), energy(10), attackDamage(0) {
+  std::cout << "ClapTrap " << name << " created!" << std::endl;
+};
+
+ClapTrap::ClapTrap(std::string name, int hit, int energy, int attackDamage)
+    : name(name), hit(hit), energy(energy), attackDamage(attackDamage) {
   std::cout << "ClapTrap " << name << " created!" << std::endl;
 };
 
@@ -31,9 +36,9 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
     hit = other.hit;
     energy = other.energy;
     attackDamage = other.attackDamage;
-    std::cout << "Assignation operator: ClapTrap " << name << " assigned!"
-              << std::endl;
   }
+  std::cout << "Assignation operator: ClapTrap " << name << " assigned!"
+            << std::endl;
   return *this;
 }
 

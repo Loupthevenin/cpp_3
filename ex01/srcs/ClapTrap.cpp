@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:22:27 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/15 14:42:52 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/16 11:44:08 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 ClapTrap::ClapTrap(std::string name)
     : name(name), hit(10), energy(10), attackDamage(0) {
+  std::cout << "ClapTrap " << name << " created!" << std::endl;
+};
+
+ClapTrap::ClapTrap(std::string name, int hit, int energy, int attackDamage)
+    : name(name), hit(hit), energy(energy), attackDamage(attackDamage) {
   std::cout << "ClapTrap " << name << " created!" << std::endl;
 };
 
@@ -42,17 +47,25 @@ ClapTrap::~ClapTrap() {
 };
 
 void ClapTrap::attack(const std::string &target) {
-  if (energy > 0) {
-    std::cout << "ClapTrap " << name << " attacks " << target << ", causing "
-              << attackDamage << " points of damage!" << std::endl;
-    energy--;
+  if (hit <= 0) {
+    std::cout << "ClapTrap " << name << " has 0 hit points" << std::endl;
+    return;
   }
+  if (energy <= 0) {
+    std::cout << "ClapTrap " << name << " has 0 energy points" << std::endl;
+    return;
+  }
+  std::cout << "ClapTrap " << name << " attacks " << target << ", causing "
+            << attackDamage << " points of damage!" << std::endl;
+  energy--;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
   std::cout << "ClapTrap " << name << " take " << amount << " damage"
             << std::endl;
   hit -= amount;
+  if (hit < 0)
+    hit = 0;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
@@ -61,5 +74,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
               << " hit points back" << std::endl;
     hit += amount;
     energy--;
+  } else {
+    std::cout << "ClapTrap " << name << " has 0 energy points" << std::endl;
   }
 }
