@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 13:51:04 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/02/15 13:56:15 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/02/16 11:54:38 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int main(void) {
   anakin.attack("Obi Wan");
   anakin.takeDamage(20);
   anakin.takeDamage(100);
+  anakin.attack("Obi Wan");
   return 0;
 }
